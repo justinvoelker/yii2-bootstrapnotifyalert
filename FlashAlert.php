@@ -35,6 +35,7 @@ class FlashAlert extends Widget
     public $type;
     public $allow_dismiss;
     public $newest_on_top;
+    public $showProgressbar;
     public $placement_from;
     public $placement_align;
     public $offset;
@@ -125,6 +126,9 @@ class FlashAlert extends Widget
         }
         if (isset($this->newest_on_top)) {
             array_push($this->_settings, "newest_on_top:$this->newest_on_top");
+        }
+        if (isset($this->showProgressbar)) {
+            array_push($this->_settings, "showProgressbar:$this->showProgressbar");
         }
         if (isset($this->placement_from) || isset($this->placement_align)) {
             $placement = [];
