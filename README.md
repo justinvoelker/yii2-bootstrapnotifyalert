@@ -52,6 +52,7 @@ Rather than accept the defaults specified by Bootstrap Notify, any property can 
 
 ```php
 <?= FlashAlert::widget([
+    'showProgressbar' => true,
     'delay' => 10000,
     'mouse_over' => 'pause',
     'placement_from' => 'bottom',
@@ -86,7 +87,7 @@ When setting `registerAsDefaults` to `true`, be sure to always include `<?= Flas
 
 ##Optional
 
-Additional CSS can be specified in your site stylesheet to further define the look and feel of the alerts.
+Additional CSS can be specified in your site stylesheet to further define the look and feel of the alerts. To use either of the following progressbar styles, the `showProgressbar` option needs to be set to `true`.
 
 The [Bootstrap Notify](http://bootstrap-notify.remabledesigns.com/) documentation includes a specific example to change the size and position of the progress bars to match their appearance in the demos:
 
