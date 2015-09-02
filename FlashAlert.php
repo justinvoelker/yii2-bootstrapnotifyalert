@@ -61,8 +61,14 @@ class FlashAlert extends Widget
         if ($this->message || $this->registerAsDefaults) {
             $this->register();
         } elseif (!empty(Yii::$app->session->allFlashes)) {
-            foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
-                $this->flash($key, $message);
+            foreach (Yii::$app->session->getAllFlashes() as $key => $messages) {
+                if (is_array($messages)) {
+                    foreach ($messages as $message) {
+                        $this->flash($key, $message);
+                    }
+                } else {
+                    $this->flash($key, $messages);
+                }
             }
         }
     }
