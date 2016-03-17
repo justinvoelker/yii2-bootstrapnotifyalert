@@ -23,6 +23,7 @@ class FlashAlert extends Widget
     private $_settings = [];
 
     public $registerAsDefaults = false;
+    public $registerPosition = null;
 
     public $icon;
     public $title;
@@ -85,6 +86,9 @@ class FlashAlert extends Widget
         $this->setOptions();
         $this->setSettings();
 
+        $view = $this->getView();
+        $position = ($this->registerPosition) ? $this->registerPosition : $view::POS_READY;
+
         if ($this->registerAsDefaults) {
             $js = '$.notifyDefaults({' . implode(',', $this->_settings) . '});';
         } elseif (count($this->_settings)) {
@@ -93,8 +97,7 @@ class FlashAlert extends Widget
             $js = '$.notify({' . implode(',', $this->_options) . '});';
         }
 
-        $view = $this->getView();
-        $view->registerJs($js, $view::POS_READY);
+        $view->registerJs($js, $position);
     }
 
     protected function setOptions()
